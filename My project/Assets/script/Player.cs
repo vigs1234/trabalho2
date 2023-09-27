@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
 {
     public int velocidade = 10;
     private Rigidbody rb;
+    public int forcaPulo = 7;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,8 +21,17 @@ public class Player : MonoBehaviour
         float h = Input.GetAxis("Horizontal");
         float v = Input.GetAxis("Vertical");
 
-        Vector3 direcao = new Vector3(h,0,v);
+        Vector3 direcao = new Vector3(h, 0, v);
         rb.AddForce(direcao * velocidade * Time.deltaTime, ForceMode.Impulse);
+
+
+
+        if (Input.GetKeyDown(KeyCode.Space)); 
+        {
+            rb.AddForce(Vector3.up * forcaPulo, ForceMode.Impulse);
+        }
+
+
 
         if (transform.position.y <= -10)
         {
